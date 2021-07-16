@@ -1,0 +1,81 @@
+// PIAIC 62041 Jahanzaib BBC Assignment 1
+pragma solidity ^0.8.0;
+// First create ParentVehicle" contract and also define functions
+contract ParentVehicle
+{
+    function start() public pure returns (string memory)
+    {
+        return "The vehicle has just started.";
+    }
+    
+    function accelerate() public pure returns (string memory)
+    {
+        return "The vehicle has just accelerated.";
+    }
+    
+    function stop() public pure returns (string memory)
+    {
+        return "The vehicle has just stopped.";
+    }
+    
+    function service() public virtual pure returns (string memory)
+    {
+        return "The vehicle is being serviced.";
+    }
+}
+// Now we are creating child contract 
+contract Car is ParentVehicle
+{
+    function service() public override virtual pure returns (string memory)
+    {
+        return "Car is being serviced.";
+    }
+}
+
+contract Truck is ParentVehicle
+{
+    function service() public override virtual pure returns (string memory)
+    {
+        return "Truck is being serviced.";
+    }
+}
+
+contract Motorcycle is ParentVehicle
+{
+    function service() public override virtual pure returns (string memory)
+    {
+        return "Motorcycle is being serviced.";
+    }
+}
+
+contract Mehran is Car
+{
+    function service() public override pure returns (string memory)
+    {
+        return "Mehran is being serviced.";
+    }
+}
+
+contract Hino is Truck
+{
+    function service() public override pure returns (string memory)
+    {
+        return "Hino is being serviced.";
+    }
+}
+
+contract Yamaha is Motorcycle
+{
+    function service() public override pure returns (string memory)
+    {
+        return "Yamaha is being serviced.";
+    }
+}
+
+contract Workshop
+{
+    function vehicleService(ParentVehicle vehicle) public pure returns (string memory)
+    {
+        return vehicle.service();
+    }
+}
